@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { TodoService } from '../services/todo.service';
+import { TaskModel } from '../services/task.model';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'todo-angular';
+  constructor(private raceService: TodoService) {}
+
+  async getTasks(): Promise<void> {
+    const tasks = await this.raceService.getTasks()
+    console.log(tasks)
+  }
 }
