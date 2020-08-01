@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { TodoService } from '../services/todo.service';
 import { TaskModel } from '../services/task.model';
+import { Title } from '@angular/platform-browser';
+import { Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -8,10 +10,14 @@ import { TaskModel } from '../services/task.model';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  constructor(private raceService: TodoService) {}
+  tasks: Array<TaskModel>
 
-  async getTasks(): Promise<void> {
-    const tasks = await this.raceService.getTasks()
-    console.log(tasks)
+  constructor(private raceService: TodoService, title: Title, meta: Meta) {
+    title.setTitle('Todo angular')
+    meta.addTag({ name: 'author', content: 'nikitamax' })
+  }
+
+  async ngOnInit(): Promise<void> {
+    this.tasks =  await this.raceService.getTasks()
   }
 }
