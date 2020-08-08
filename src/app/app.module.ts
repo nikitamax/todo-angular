@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
 import { MainInputComponent } from './main-input/main-input.component'
 import { TaskListComponent } from './task-list/task-list.component'
-import { ApiService } from '../services/api.service'
 import { TaskItemComponent } from './task-item/task-item.component'
 
 @NgModule({
@@ -16,7 +15,7 @@ import { TaskItemComponent } from './task-item/task-item.component'
     TaskItemComponent
   ],
   imports: [BrowserModule, AppRoutingModule],
-  providers: [ApiService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

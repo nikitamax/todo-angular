@@ -12,12 +12,16 @@ import { Meta } from '@angular/platform-browser'
 export class AppComponent {
   tasks: Array<TaskModel>
 
-  constructor(private raceService: TodoService, title: Title, meta: Meta) {
+  constructor(private todoService: TodoService, title: Title, meta: Meta) {
     title.setTitle('Todo angular')
     meta.addTag({ name: 'author', content: 'nikitamax' })
   }
 
-  async ngOnInit(): Promise<void> {
-    this.tasks = await this.raceService.getTasks()
+  async ngOnInit() {
+    this.getTasks()
+  }
+
+  getTasks() {
+    this.todoService.getTasks().subscribe((tasks) => (this.tasks = tasks))
   }
 }
