@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
-import { TodoService } from '../services/todo.service';
-import { TaskModel } from '../services/task.model';
-import { Title } from '@angular/platform-browser';
-import { Meta } from '@angular/platform-browser';
+import { Component } from '@angular/core'
+import { TodoService } from '../services/todo.service'
+import { TaskModel } from '../services/task.model'
+import { Title } from '@angular/platform-browser'
+import { Meta } from '@angular/platform-browser'
 
 @Component({
   selector: 'app-root',
@@ -18,6 +18,6 @@ export class AppComponent {
   }
 
   async ngOnInit(): Promise<void> {
-    this.tasks =  await this.raceService.getTasks()
+    this.tasks = await this.raceService.getTasks()
   }
 }
