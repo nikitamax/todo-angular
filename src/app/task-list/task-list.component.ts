@@ -7,6 +7,8 @@ import { TaskModel } from '../../services/task.model'
 })
 export class TaskListComponent {
   @Input() tasks: TaskModel[]
+  @Input() deleteTask: Function
+  @Input() toggleTask: Function
 
   constructor() {}
 }

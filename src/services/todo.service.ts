@@ -53,4 +53,34 @@ export class TodoService {
       }
     })
   }
+
+  deleteTask(id): Observable<TaskModel> {
+    return new Observable<TaskModel>((observer) => {
+      try {
+        db.collection('tasks')
+          .doc(id)
+          .delete()
+          .then(() => {
+            observer.next()
+          })
+      } catch (error) {
+        observer.error(error)
+      }
+    })
+  }
+
+  toggleTask(task): Observable<TaskModel> {
+    return new Observable<TaskModel>((observer) => {
+      try {
+        db.collection('tasks')
+          .doc(task.id)
+          .set({ ...task, completed: !task.completed })
+          .then(() => {
+            observer.next()
+          })
+      } catch (error) {
+        observer.error(error)
+      }
+    })
+  }
 }

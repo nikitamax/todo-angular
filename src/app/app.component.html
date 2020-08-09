@@ -17,7 +17,11 @@
 
       <label for="toggle-all"></label>
 
-      <task-list [tasks]="tasks"></task-list>
+      <task-list
+        [tasks]="tasks"
+        [deleteTask]="deleteTask"
+        [toggleTask]="toggleTask"
+      ></task-list>
     </section>
   </div>
 </section>

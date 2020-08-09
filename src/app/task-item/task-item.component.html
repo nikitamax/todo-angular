@@ -2,10 +2,15 @@
   <input type="text" class="edit" />
 
   <div class="view">
-    <input type="checkbox" class="toggle" [checked]="task.completed" />
+    <input
+      type="checkbox"
+      class="toggle"
+      [checked]="task.completed"
+      (change)="handleToggleTask(task)"
+    />
 
     <label>{{ task.text }}</label>
 
-    <button class="destroy"></button>
+    <button (click)="handleDeleteBtnClick(task.id)" class="destroy"></button>
   </div>
 </li>

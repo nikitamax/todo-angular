@@ -22,14 +22,34 @@ export class AppComponent {
     this.getTasks()
   }
 
-  getTasks() {
+  getTasks = () => {
     this.todoService.getTasks().subscribe((tasks) => (this.tasks = tasks))
   }
 
-  addTask() {
+  addTask = () => {
+    if (!this.newTaskText) {
+      return
+    }
     this.todoService.addTask(this.newTaskText).subscribe((newTask) => {
       this.tasks.push(newTask)
       this.newTaskText = ''
+    })
+  }
+
+  deleteTask = (id) => {
+    this.todoService.deleteTask(id).subscribe(() => {
+      this.tasks = this.tasks.filter((task) => task.id !== id)
+    })
+  }
+
+  toggleTask = (changedTask) => {
+    this.todoService.toggleTask(changedTask).subscribe(() => {
+      this.tasks = this.tasks.map((task) => {
+        if (task.id === changedTask.id) {
+          return { ...task, completed: !task.completed }
+        }
+        return task
+      })
     })
   }
 }

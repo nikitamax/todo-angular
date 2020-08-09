@@ -1,3 +1,8 @@
 <ul class="todo-list">
-  <task-item *ngFor="let task of tasks" [task]="task"></task-item>
+  <task-item
+    *ngFor="let task of tasks"
+    [task]="task"
+    [deleteTask]="deleteTask"
+    [toggleTask]="toggleTask"
+  ></task-item>
 </ul>

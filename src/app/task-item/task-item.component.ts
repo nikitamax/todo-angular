@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core'
 import { TaskModel } from '../../services/task.model'
+import { TodoService } from '../../services/todo.service'
 
 @Component({
   selector: 'task-item',
@@ -7,6 +8,16 @@ import { TaskModel } from '../../services/task.model'
 })
 export class TaskItemComponent {
   @Input() task: TaskModel
+  @Input() deleteTask: Function
+  @Input() toggleTask: Function
 
-  constructor() {}
+  constructor(private todoService: TodoService) {}
+
+  handleDeleteBtnClick(id) {
+    this.deleteTask(id)
+  }
+
+  handleToggleTask(task) {
+    this.toggleTask(task)
+  }
 }
