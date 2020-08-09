@@ -3,7 +3,13 @@
     <header class="header">
       <h1>todos</h1>
 
-      <main-input></main-input>
+      <input
+        [(ngModel)]="newTaskText"
+        (keydown.enter)="addTask()"
+        class="new-todo"
+        placeholder="What needs to be done?"
+        value=""
+      />
     </header>
 
     <section class="main">
@@ -11,7 +17,7 @@
 
       <label for="toggle-all"></label>
 
-      <task-list></task-list>
+      <task-list [tasks]="tasks"></task-list>
     </section>
   </div>
 </section>

@@ -4,7 +4,7 @@ import db from './firebase'
 import { Observable } from 'rxjs'
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TodoService {
   constructor() {}
@@ -20,13 +20,34 @@ export class TodoService {
               const data = doc.data()
               const task = {
                 ...data,
-                id: doc.id
+                id: doc.id,
               }
               tasks.push(task)
             })
           })
 
         observer.next(tasks)
+      } catch (error) {
+        observer.error(error)
+      }
+    })
+  }
+
+  addTask(text): Observable<TaskModel> {
+    return new Observable<TaskModel>((observer) => {
+      try {
+        db.collection('tasks')
+          .add({
+            text,
+            completed: false,
+          })
+          .then((doc) => {
+            observer.next({
+              id: doc.id,
+              completed: false,
+              text,
+            })
+          })
       } catch (error) {
         observer.error(error)
       }

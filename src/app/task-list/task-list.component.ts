@@ -1,5 +1,4 @@
-import { Component } from '@angular/core'
-import { TodoService } from '../../services/todo.service'
+import { Component, Input } from '@angular/core'
 import { TaskModel } from '../../services/task.model'
 
 @Component({
@@ -7,15 +6,7 @@ import { TaskModel } from '../../services/task.model'
   templateUrl: './task-list.component.html',
 })
 export class TaskListComponent {
-  tasks: TaskModel[]
+  @Input() tasks: TaskModel[]
 
-  constructor(private todoService: TodoService) {}
-
-  async ngOnInit() {
-    this.getTasks()
-  }
-
-  getTasks() {
-    this.todoService.getTasks().subscribe((tasks) => (this.tasks = tasks))
-  }
+  constructor() {}
 }
