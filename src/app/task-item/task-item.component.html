@@ -2,9 +2,9 @@
   <input type="text" class="edit" />
 
   <div class="view">
-    <input type="checkbox" class="toggle" />
+    <input type="checkbox" class="toggle" [checked]="task.completed" />
 
-    <label>1</label>
+    <label>{{ task.text }}</label>
 
     <button class="destroy"></button>
   </div>
