@@ -9,6 +9,7 @@ export class TaskListComponent {
   @Input() tasks: TaskModel[]
   @Input() deleteTask: Function
   @Input() toggleTask: Function
+  @Input() editTask: Function
 
   constructor() {}
 }

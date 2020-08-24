@@ -52,4 +52,15 @@ export class AppComponent {
       })
     })
   }
+
+  editTask = (editedTask) => {
+    this.todoService.editTask(editedTask).subscribe(() => {
+      this.tasks = this.tasks.map((task) => {
+        if (task.id === editedTask.id) {
+          return editedTask
+        }
+        return task
+      })
+    })
+  }
 }

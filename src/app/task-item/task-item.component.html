@@ -1,5 +1,12 @@
-<li>
-  <input type="text" class="edit" />
+<li #liRef>
+  <input 
+    #editInput 
+    [(ngModel)]="editedTaskText" 
+    type="text" 
+    class="edit"
+    (keydown.enter)="edit()"
+    (blur)="handleBlur()" 
+  />
 
   <div class="view">
     <input
@@ -9,7 +16,7 @@
       (change)="handleToggleTask(task)"
     />
 
-    <label>{{ task.text }}</label>
+    <label (dblclick)="handleDoubleClick()">{{ task.text }}</label>
 
     <button (click)="handleDeleteBtnClick(task.id)" class="destroy"></button>
   </div>

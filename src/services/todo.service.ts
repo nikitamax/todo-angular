@@ -83,4 +83,19 @@ export class TodoService {
       }
     })
   }
+
+  editTask(task): Observable<TaskModel> {
+    return new Observable<TaskModel>((observer) => {
+      try {
+        db.collection('tasks')
+          .doc(task.id)
+          .set(task)
+          .then(() => {
+            observer.next()
+          })
+      } catch (error) {
+        observer.error(error)
+      }
+    })
+  }
 }
